@@ -39,6 +39,11 @@ spring:
             scopes:
               - https://graph.microsoft.com/User.Read
 
+#          webapiB: # When authorization-grant-type is null, on behalf of flow is used by default
+#            authorization-grant-type: on_behalf_of
+#            scopes:
+#              - ${WEB_API_B_APP_ID_URL}/WebApiB.ExampleScope
+
   # Database config
   datasource:
 #    url: jdbc:oracle:thin:@localhost:1521:xe
