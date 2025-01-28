@@ -1,0 +1,3 @@
+[submodule "payforlegalaid-swagger"]
+	path = payforlegalaid-swagger
+	url = ../payforlegalaid-swagger
