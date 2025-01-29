@@ -76,6 +76,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="3-add=primary-key-report-tracing" author="robert_buczek" >
+        <addPrimaryKey tableName="REPORT_TRACKING" columnNames="ID"/>
+    </changeSet>
+
     <changeSet id="4-grant-select-to-report-tracking-any-report" author="robert_buczek">
         <sql>
             GRANT SELECT ON "GPFD"."REPORT_TRACKING" TO "ANY_REPORT"
