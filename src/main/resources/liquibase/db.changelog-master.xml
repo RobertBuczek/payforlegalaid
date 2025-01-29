@@ -8,7 +8,7 @@
     <changeSet id="1-create-csv-to-sql-mapping-table" author="robert_buczek">
         <createTable tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
             <column name="ID" type="CHAR (36)">
-                <constraints nullable="true"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="REPORT_NAME" type="VARCHAR(200)">
                 <constraints nullable="true"/>
@@ -43,10 +43,6 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="1-add=primary-key-sql-mapping-table" author="robert_buczek" >
-        <addPrimaryKey tableName="CSV_TO_SQL_MAPPING_TABLE" columnNames="ID"/>
-    </changeSet>
-
     <changeSet id="2-grant-select-csv-to-sql-to-any-report" author="robert_buczek">
         <sql>
             GRANT SELECT ON "GPFD"."CSV_TO_SQL_MAPPING_TABLE" TO "ANY_REPORT"
@@ -55,7 +51,7 @@
 
     <changeSet id="3-create-report-tracking-table" author="robert_buczek">
         <createTable tableName="REPORT_TRACKING" schemaName="GPFD">
-            <column name="ID" type="INTEGER">
+            <column name="ID" type="CHAR (36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="REPORT_NAME" type="VARCHAR(80)">
@@ -74,10 +70,6 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet id="3-add=primary-key-report-tracing" author="robert_buczek" >
-        <addPrimaryKey tableName="REPORT_TRACKING" columnNames="ID"/>
     </changeSet>
 
     <changeSet id="4-grant-select-to-report-tracking-any-report" author="robert_buczek">
