@@ -123,6 +123,21 @@
 
         <insert tableName="CSV_TO_SQL_MAPPING_TABLE">
             <column name="ID" valueComputed="utils_pkg.generate_uuid()"/>
+            <column name="REPORT_NAME" value="Ctest-2"/>
+            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_SUMMARY"/>
+            <column name="BASE_URL"
+                    value="https://justiceuk.sharepoint.com/:x:/r/sites/FinanceSysReference/Shared%20Documents/General/Monthly%20Accounts/Sharepoint%20base%20reports/General%20CCMS%20Tools/CCMS%20invoice%20analysis.xlsb?d=w7bc78b4b2c94489e899415353a37d234"/>
+            <column name="REPORT_OWNER" value="Chancey Mctavish"/>
+            <column name="REPORT_CREATOR" value="Sophia Patel"/>
+            <column name="REPORT_DESCRIPTION" value="Summary of invoices in CIS and CCMS by original source IT system"/>
+            <column name="EXCEL_REPORT" value="CCMS_invoice_analysis"/>
+            <column name="EXCEL_SHEET_NUM" value="2"/>
+            <column name="CSV_NAME" value="CIS-to-CCMS-import-analysis"/>
+            <column name="OWNER_EMAIL" value="owneremail@email.com"/>
+        </insert>
+
+        <insert tableName="CSV_TO_SQL_MAPPING_TABLE">
+            <column name="ID" valueComputed="utils_pkg.generate_uuid()"/>
             <column name="REPORT_NAME" value="CCMS_invoice_analysis-CIS-to-CCMS-import-analysis-2"/>
             <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_SUMMARY"/>
             <column name="BASE_URL"

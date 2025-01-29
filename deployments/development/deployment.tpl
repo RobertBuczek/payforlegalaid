@@ -16,6 +16,12 @@ spec:
     spec:
       serviceAccountName: laa-get-payments-finance-data-dev-service
       containers:
+        - name: liquibase-init
+          image: liqu-inilisaise
+          my init
+
+
+          .
         - name: gpfd-api-container-dev
           image: ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
           ports:
