@@ -122,7 +122,7 @@
         <comment>Insert initial data into CSV_TO_SQL_MAPPING_TABLE</comment>
 
         <insert tableName="CSV_TO_SQL_MAPPING_TABLE">
-            <column name="ID" valueComputed="utils_pkg.generate_uuid(42)"/>
+            <column name="ID" valueComputed="utils_pkg.generate_uuid()"/>
             <column name="REPORT_NAME" value="CCMS_invoice_analysis-CIS-to-CCMS-import-analysis-2"/>
             <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_SUMMARY"/>
             <column name="BASE_URL"
