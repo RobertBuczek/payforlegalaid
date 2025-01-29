@@ -67,10 +67,8 @@
     </changeSet>
 
     <changeSet id="update-priivileges" author="robert_buczek">
-        <sql splitStatements="false">
-            <![CDATA[
-                GRANT SELECT ON "GPFD"."REPORT_TRACKING" TO "ANY_REPORT";
-            ]]>
+        <sql>
+                GRANT SELECT ON "GPFD"."REPORT_TRACKING" TO "ANY_REPORT"
         </sql>
     </changeSet>
 
