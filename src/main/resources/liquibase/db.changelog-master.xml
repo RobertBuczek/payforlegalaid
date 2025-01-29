@@ -64,6 +64,11 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <sql splitStatements="false">
+            <![CDATA[
+                GRANT SELECT ON "GPFD"."REPORT_TRACKING" TO "ANY_REPORT";
+            ]]>
+        </sql>
     </changeSet>
 
     <changeSet id="4-create-utils_pkg" author="robert_buczek">
