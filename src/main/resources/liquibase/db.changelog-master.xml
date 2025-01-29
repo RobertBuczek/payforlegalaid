@@ -63,7 +63,7 @@
             <column name="CREATION_TIME" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
-            <column name="MAPPING_ID" type="INTEGER">
+            <column name="MAPPING_ID" type="CHAR (36)">
                 <constraints nullable="false"/>
             </column>
             <column name="REPORT_GENERATED_BY" type="VARCHAR(500)">
