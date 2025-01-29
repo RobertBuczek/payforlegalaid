@@ -43,7 +43,13 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2-create-report-tracking-table" author="robert_buczek">
+    <changeSet id="2-grant-select-csv-to-sql-to-any-report" author="robert_buczek">
+        <sql>
+            GRANT SELECT ON "GPFD"."CSV_TO_SQL_MAPPING_TABLE" TO "ANY_REPORT"
+        </sql>
+    </changeSet>
+
+    <changeSet id="3-create-report-tracking-table" author="robert_buczek">
         <createTable tableName="REPORT_TRACKING" schemaName="GPFD">
             <column name="ID" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
@@ -66,13 +72,13 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="3-grant-select-to-any-report" author="robert_buczek">
+    <changeSet id="4-grant-select-to-report-tracking-any-report" author="robert_buczek">
         <sql>
             GRANT SELECT ON "GPFD"."REPORT_TRACKING" TO "ANY_REPORT"
         </sql>
     </changeSet>
 
-    <changeSet id="4-create-utils_pkg" author="robert_buczek">
+    <changeSet id="5-create-utils_pkg" author="robert_buczek">
         <sql splitStatements="false">
             <![CDATA[
                 CREATE OR REPLACE PACKAGE utils_pkg
@@ -84,7 +90,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="5-create-geerat-id-function_pkg" author="robert_buczek">
+    <changeSet id="6-create-geerat-id-function_pkg" author="robert_buczek">
         <sql splitStatements="false">
             <![CDATA[
                 CREATE OR REPLACE PACKAGE BODY utils_pkg
@@ -111,7 +117,7 @@
         </rollback>
     </changeSet>
 
-    <changeSet id="6-insert-data-csv-to-sql-mapping-table" author="robert_buczek">
+    <changeSet id="7-insert-data-csv-to-sql-mapping-table" author="robert_buczek">
 
         <comment>Insert initial data into CSV_TO_SQL_MAPPING_TABLE</comment>
 
