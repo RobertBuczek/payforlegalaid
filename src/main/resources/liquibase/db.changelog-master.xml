@@ -43,6 +43,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="1-add=primary-key-sql-mapping-table" author="robert_buczek" >
+        <addPrimaryKey tableName="CSV_TO_SQL_MAPPING_TABLE" columnNames="ID"/>
+    </changeSet>
+
     <changeSet id="2-grant-select-csv-to-sql-to-any-report" author="robert_buczek">
         <sql>
             GRANT SELECT ON "GPFD"."CSV_TO_SQL_MAPPING_TABLE" TO "ANY_REPORT"
