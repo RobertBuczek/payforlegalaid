@@ -68,7 +68,6 @@ public class AuthorizeHttpRequestsBuilder
                 .requestMatchers(API_DOCS_ROOT, SWAGGER_UI, SWAGGER_FILE).permitAll()  // Allow unrestricted access to API docs and Swagger UI
                 .requestMatchers(ACTUATOR_ENDPOINT, HEALTH_ENDPOINT).permitAll()         // Allow unrestricted access to actuator and health endpoints
                 .requestMatchers("/login").permitAll()
-                .anyRequest().authenticated();  // Require authentication for all other requests
+                .anyRequest().access(new TestingAuthorizationManagerWithAuthenticationProvider<>());  // Require authentication for all other requests
     }
-
 }
