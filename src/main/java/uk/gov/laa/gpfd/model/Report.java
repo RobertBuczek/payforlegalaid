@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.UUID;
 
 @Data
@@ -18,8 +19,9 @@ public class Report {
     private String templateSecureDocumentId;
     Timestamp reportCreationTime;
     Timestamp lastDatabaseRefreshDate;
+    private String description;
     private int numDaysToKeep;
-    private UUID reportOutputType;
+    private ReportOutputType reportOutputType;
     private UUID reportCreatorId;
     private String reportCreatorName;
     private String reportCreatorEmail;
@@ -28,5 +30,5 @@ public class Report {
     private String reportOwnerEmail;
     private String fileName;
     private Boolean active;
-
+    private Collection<ReportQuery> queries;
 }

@@ -11,6 +11,12 @@
         </sql>
     </changeSet>
 
+    <changeSet id="0-schemANY_REPORTa" author="buczek_robert">
+        <sql>
+            CREATE SCHEMA ANY_REPORT;
+        </sql>
+    </changeSet>
+
     <changeSet id="3-create-report-tracking-table" author="robert_buczek">
         <createTable tableName="REPORT_TRACKING" schemaName="GPFD">
             <column name="ID" type="CHAR (36)">
@@ -78,24 +84,9 @@
         <comment>Insert initial data into CSV_TO_SQL_MAPPING_TABLE</comment>
 
         <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="de30650e-dd90-475f-b2b1-6bc546b419d5"/>
-            <column name="REPORT_NAME" value="CCMS_invoice_analysis-CIS-to-CCMS-import-analysis-2"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_SUMMARY"/>
-            <column name="BASE_URL"
-                    value="sharepoint"/>
-            <column name="REPORT_OWNER" value="Chancey Mctavish"/>
-            <column name="REPORT_CREATOR" value="Sophia Patel"/>
-            <column name="REPORT_DESCRIPTION" value="Summary of invoices in CIS and CCMS by original source IT system"/>
-            <column name="EXCEL_REPORT" value="CCMS_invoice_analysis"/>
-            <column name="EXCEL_SHEET_NUM" value="2"/>
-            <column name="CSV_NAME" value="CIS-to-CCMS-import-analysis"/>
-            <column name="OWNER_EMAIL" value="owneremail@email.com"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
             <column name="ID" value="0fbec75b-2d72-44f5-a0e3-2dcb29d92f79"/>
             <column name="REPORT_NAME" value="CCMS_and_CIS_Bank_Account_Report_w_Category_Code_(MNTH)-MAIN-12"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_BANK_MONTH"/>
+            <column name="SQL_QUERY" value="SELECT * FROM GPFD.VENDOR_SITES"/>
             <column name="BASE_URL"
                     value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FFinanceSysReference%2FShared%20Documents%2FGeneral%2FMonthly%20Accounts%2F2023%2D06%2FBank%20reporting"/>
             <column name="REPORT_OWNER" value="Daniel Mctavish"/>
@@ -109,147 +100,20 @@
         </insert>
 
         <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="74fe1701-75d3-49cc-836b-f8e85feff8de"/>
-            <column name="REPORT_NAME" value="CIS to CCMS import exceptions"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_EXCEPTIONS"/>
+            <column name="ID" value="0fbec75b-2d72-44f5-a0e3-2dcb29d92f78"/>
+            <column name="REPORT_NAME" value="CCMS_and_CIS_Bank_Account_Report_w_Category_Code_(MNTH)-MAIN-12"/>
+            <column name="SQL_QUERY" value="SELECT * FROM GPFD.HELD_PAYMENTS"/>
             <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
+                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FFinanceSysReference%2FShared%20Documents%2FGeneral%2FMonthly%20Accounts%2F2023%2D06%2FBank%20reporting"/>
+            <column name="REPORT_OWNER" value="Daniel Mctavish"/>
+            <column name="REPORT_CREATOR" value="Brian Limond"/>
             <column name="REPORT_DESCRIPTION"
-                    value="Details of invoices transferred from CIS to CCMS by Legal Aid Scheme"/>
-            <column name="EXCEL_REPORT" value="CIS_TO_CCMS_IMPORT_EXCEPTIONS"/>
-            <column name="EXCEL_SHEET_NUM" value="3"/>
+                    value="Summary of all payments made by CCMS/CIS and all cash receipts applied to debt in the previous month"/>
+            <column name="EXCEL_REPORT" value="CCMS_and_CIS_Bank_Account_Report_w_Category_Code_(MNTH)"/>
+            <column name="EXCEL_SHEET_NUM" value="12"/>
             <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
+            <column name="OWNER_EMAIL" value="secondowneremail@email.com"/>
         </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="c622c85b-afbc-49b0-be47-d67a0b002bf6"/>
-            <column name="REPORT_NAME" value="CIS to CCMS payment value Defined"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_DEFINED_PAYMENT_GROUPS"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION"
-                    value="Details of invoices transferred from CIS to CCMS by Legal Aid Scheme"/>
-            <column name="EXCEL_REPORT" value="CIS_TO_CCMS_PAYMENT_VALUE_DEFINED"/>
-            <column name="EXCEL_SHEET_NUM" value="4"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="e0d4db9f-354d-48bc-9eb8-8de1a066aef5"/>
-            <column name="REPORT_NAME" value="CIS to CCMS payment value Not Defined"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_NOT_DEFINED_PAYMENT_GROUPS"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION"
-                    value="Details of invoices transferred from CIS to CCMS by Legal Aid Scheme"/>
-            <column name="EXCEL_REPORT" value="CIS_TO_CCMS_PAYMENT_VALUE_NOT_DEFINED"/>
-            <column name="EXCEL_SHEET_NUM" value="5"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="6c96f3b6-9002-451a-aed3-264830f4d4e1"/>
-            <column name="REPORT_NAME" value="CCMS Held Payments"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION"
-                    value="Details of invoices transferred from CIS to CCMS by Legal Aid Scheme"/>
-            <column name="EXCEL_REPORT" value="CCMS_HELD_PAYMENTS"/>
-            <column name="EXCEL_SHEET_NUM" value="6"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="22196bb2-5989-449d-8495-ab9ec08e771b"/>
-            <column name="REPORT_NAME" value="CCMS AP Debtors"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_CCMS_AP_DEBTS"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION"
-                    value="Details of invoices transferred from CIS to CCMS by Legal Aid Scheme"/>
-            <column name="EXCEL_REPORT" value="CCMS_AP_DEBTORS"/>
-            <column name="EXCEL_SHEET_NUM" value="7"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="3d88a36e-091c-4dcc-9b1b-441f4e027f18"/>
-            <column name="REPORT_NAME" value="CCMS_and_CIS_Bank_Account_Report_w_Category_Code_YTD"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_BANK_YTD"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION"
-                    value="Summary of all payments made by CCMS/CIS and all cash receipts applied to debt YTD"/>
-            <column name="EXCEL_REPORT" value="CCMS_and_CIS_Bank_Account_Report_w_Category_Code_YTD"/>
-            <column name="EXCEL_SHEET_NUM" value="8"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="3fd2c085-18a6-4e01-87d9-15ee537cdf0f"/>
-            <column name="REPORT_NAME" value="CCMS General Ledger (tiny columns multiple periods)"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CCMS_GL_EXTRACTOR_YTD"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION" value="CCMS General ledger extractor (tiny columns multiple periods)"/>
-            <column name="EXCEL_REPORT" value="CCMS_GEN_LEDGER_TINYCOL_MULPERIODS"/>
-            <column name="EXCEL_SHEET_NUM" value="9"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="7b907f2d-8937-4488-b8d1-b56f5c5deb0c"/>
-            <column name="REPORT_NAME" value="CCMS General Ledger (tiny columns multiple periods manual)"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CCMS_GL_EXTRACTOR_MANUAL_YTD"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION"
-                    value="CCMS General ledger extractor (tiny columns multiple periods manual)"/>
-            <column name="EXCEL_REPORT" value="CCMS_GEN_LEDGER_TINYCOL_MULPERIODS_MANUAL"/>
-            <column name="EXCEL_SHEET_NUM" value="10"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
-        <insert tableName="CSV_TO_SQL_MAPPING_TABLE" schemaName="GPFD">
-            <column name="ID" value="92457e1c-f01f-4eae-b684-73a92c90cc8f"/>
-            <column name="REPORT_NAME" value="CCMS Authorised expenditure (Contracting live system)"/>
-            <column name="SQL_QUERY" value="SELECT * FROM ANY_REPORT.V_CCMS_AUTHORISED_INVS_CONTRACTING"/>
-            <column name="BASE_URL"
-                    value="https://justiceuk.sharepoint.com/sites/FinanceSysReference/SitePages/GPFD-Test-Site-page.aspx"/>
-            <column name="REPORT_OWNER" value="William Moran"/>
-            <column name="REPORT_CREATOR" value="William Unwin"/>
-            <column name="REPORT_DESCRIPTION" value="CCMS Authorised expenditure (Contracting live system)"/>
-            <column name="EXCEL_REPORT" value="CCMS_AUTH_EXPEND_CONTRACTING"/>
-            <column name="EXCEL_SHEET_NUM" value="11"/>
-            <column name="CSV_NAME" value="MAIN"/>
-            <column name="OWNER_EMAIL" value="William.Moran@Justice.gov.uk"/>
-        </insert>
-
     </changeSet>
 
     <changeSet id="0002001-create-report-output-types-table" author="jason smallman" >
@@ -587,30 +451,30 @@
 
         <comment>Insert initial data into REPORT_QUERIES for CCMS Excel report</comment>
 
-        <insert tableName="REPORT_QUERIES" schemaName="GPFD">
-            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>
-            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>
-            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_SUMMARY"/>
-            <column name="TAB_NAME" value="CIS to CCMS import analysis"/>
-        </insert>
-        <insert tableName="REPORT_QUERIES" schemaName="GPFD">
-            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>
-            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_EXCEPTIONS"/>
-            <column name="TAB_NAME" value="CIS to CCMS import exceptions"/>
-        </insert>
-        <insert tableName="REPORT_QUERIES" schemaName="GPFD">
-            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>
-            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>
-            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_DEFINED_PAYMENT_GROUPS"/>
-            <column name="TAB_NAME" value="CCMS Payment value(defined)"/>
-        </insert>
-        <insert tableName="REPORT_QUERIES" schemaName="GPFD">
-            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>
-            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>
-            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_NOT_DEFINED_PAYMENT_GROUPS"/>
-            <column name="TAB_NAME" value="CCMS Payment value(not defined)"/>
-        </insert>
+<!--        <insert tableName="REPORT_QUERIES" schemaName="GPFD">-->
+<!--            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>-->
+<!--            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>-->
+<!--            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_SUMMARY"/>-->
+<!--            <column name="TAB_NAME" value="CIS to CCMS import analysis"/>-->
+<!--        </insert>-->
+<!--        <insert tableName="REPORT_QUERIES" schemaName="GPFD">-->
+<!--            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>-->
+<!--            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_EXCEPTIONS"/>-->
+<!--            <column name="TAB_NAME" value="CIS to CCMS import exceptions"/>-->
+<!--        </insert>-->
+<!--        <insert tableName="REPORT_QUERIES" schemaName="GPFD">-->
+<!--            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>-->
+<!--            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>-->
+<!--            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_DEFINED_PAYMENT_GROUPS"/>-->
+<!--            <column name="TAB_NAME" value="CCMS Payment value(defined)"/>-->
+<!--        </insert>-->
+<!--        <insert tableName="REPORT_QUERIES" schemaName="GPFD">-->
+<!--            <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>-->
+<!--            <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>-->
+<!--            <column name="QUERY" value="SELECT * FROM ANY_REPORT.V_CIS_TO_CCMS_INVOICE_NOT_DEFINED_PAYMENT_GROUPS"/>-->
+<!--            <column name="TAB_NAME" value="CCMS Payment value(not defined)"/>-->
+<!--        </insert>-->
         <insert tableName="REPORT_QUERIES" schemaName="GPFD">
             <column name="ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb4"/>
             <column name="REPORT_ID" value="b36f9bbb-1178-432c-8f99-8090e285f2d3"/>
@@ -629,45 +493,45 @@
 
         <comment>Insert initial data into FIELD_ATTRIBUTES for CCMS Excel report, tab Import Analysis</comment>
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7361"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>
-            <column name="SOURCE_NAME" value="DATE_AUTHORISED_CIS"/>
-            <column name="MAPPED_NAME" value="DATE_AUTHORISED_CIS"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="20.67"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7361"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>-->
+<!--            <column name="SOURCE_NAME" value="DATE_AUTHORISED_CIS"/>-->
+<!--            <column name="MAPPED_NAME" value="DATE_AUTHORISED_CIS"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="20.67"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7362"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>
-            <column name="SOURCE_NAME" value="THE_SYSTEM"/>
-            <column name="MAPPED_NAME" value="THE_SYSTEM"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="22.83"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7362"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>-->
+<!--            <column name="SOURCE_NAME" value="THE_SYSTEM"/>-->
+<!--            <column name="MAPPED_NAME" value="THE_SYSTEM"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="22.83"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7363"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>
-            <column name="SOURCE_NAME" value="CIS_VALUE"/>
-            <column name="MAPPED_NAME" value="CIS_VALUE"/>
-            <column name="FORMAT" value="#.00"/>
-            <column name="FORMAT_TYPE" value="double"/>
-            <column name="COLUMN_WIDTH" value="10.17"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7363"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>-->
+<!--            <column name="SOURCE_NAME" value="CIS_VALUE"/>-->
+<!--            <column name="MAPPED_NAME" value="CIS_VALUE"/>-->
+<!--            <column name="FORMAT" value="#.00"/>-->
+<!--            <column name="FORMAT_TYPE" value="double"/>-->
+<!--            <column name="COLUMN_WIDTH" value="10.17"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7364"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>
-            <column name="SOURCE_NAME" value="CCMS_VALUE"/>
-            <column name="MAPPED_NAME" value="CCMS_VALUE"/>
-            <column name="FORMAT" value="#.00"/>
-            <column name="FORMAT_TYPE" value="double"/>
-            <column name="COLUMN_WIDTH" value="11.83"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="b9dc706c-b05d-4339-9521-1fad144b7364"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb0"/>-->
+<!--            <column name="SOURCE_NAME" value="CCMS_VALUE"/>-->
+<!--            <column name="MAPPED_NAME" value="CCMS_VALUE"/>-->
+<!--            <column name="FORMAT" value="#.00"/>-->
+<!--            <column name="FORMAT_TYPE" value="double"/>-->
+<!--            <column name="COLUMN_WIDTH" value="11.83"/>-->
+<!--        </insert>-->
 
     </changeSet>
 
@@ -675,180 +539,180 @@
 
         <comment>Insert initial data into FIELD_ATTRIBUTES for CCMS Excel report, tab import exceptions</comment>
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a1"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="ACC_CODE"/>
-            <column name="MAPPED_NAME" value="ACC_CODE"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="9.33"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a1"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="ACC_CODE"/>-->
+<!--            <column name="MAPPED_NAME" value="ACC_CODE"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="9.33"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a2"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="ACCO_HELD_BY_TYPE"/>
-            <column name="MAPPED_NAME" value="ACCO_HELD_BY_TYPE"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="18.67"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a2"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="ACCO_HELD_BY_TYPE"/>-->
+<!--            <column name="MAPPED_NAME" value="ACCO_HELD_BY_TYPE"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="18.67"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a3"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="DTYP_DOC_TYPE_ID"/>
-            <column name="MAPPED_NAME" value="DTYP_DOC_TYPE_ID"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="17.33"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a3"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="DTYP_DOC_TYPE_ID"/>-->
+<!--            <column name="MAPPED_NAME" value="DTYP_DOC_TYPE_ID"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="17.33"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a4"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="THE_SYSTEM"/>
-            <column name="MAPPED_NAME" value="THE_SYSTEM"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="11.17"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a4"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="THE_SYSTEM"/>-->
+<!--            <column name="MAPPED_NAME" value="THE_SYSTEM"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="11.17"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a5"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="DATE_CREATED_CIS"/>
-            <column name="MAPPED_NAME" value="DATE_CREATED_CIS"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="17.17"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a5"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="DATE_CREATED_CIS"/>-->
+<!--            <column name="MAPPED_NAME" value="DATE_CREATED_CIS"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="17.17"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a6"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="DATE_AUTHORISED_CIS"/>
-            <column name="MAPPED_NAME" value="DATE_AUTHORISED_CIS"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="20.67"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a6"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="DATE_AUTHORISED_CIS"/>-->
+<!--            <column name="MAPPED_NAME" value="DATE_AUTHORISED_CIS"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="20.67"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a7"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="TRANS_INT_ID"/>
-            <column name="MAPPED_NAME" value="TRANS_INT_ID"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="long"/>
-            <column name="COLUMN_WIDTH" value="12.67"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a7"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="TRANS_INT_ID"/>-->
+<!--            <column name="MAPPED_NAME" value="TRANS_INT_ID"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="long"/>-->
+<!--            <column name="COLUMN_WIDTH" value="12.67"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a8"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="VOLUME"/>
-            <column name="MAPPED_NAME" value="VOLUME"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="long"/>
-            <column name="COLUMN_WIDTH" value="7.67"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a8"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="VOLUME"/>-->
+<!--            <column name="MAPPED_NAME" value="VOLUME"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="long"/>-->
+<!--            <column name="COLUMN_WIDTH" value="7.67"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a9"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="VALUE"/>
-            <column name="MAPPED_NAME" value="VALUE"/>
-            <column name="FORMAT" value="#.00"/>
-            <column name="FORMAT_TYPE" value="double"/>
-            <column name="COLUMN_WIDTH" value="9.17"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19a9"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="VALUE"/>-->
+<!--            <column name="MAPPED_NAME" value="VALUE"/>-->
+<!--            <column name="FORMAT" value="#.00"/>-->
+<!--            <column name="FORMAT_TYPE" value="double"/>-->
+<!--            <column name="COLUMN_WIDTH" value="9.17"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19b1"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="INVOICE_ID"/>
-            <column name="MAPPED_NAME" value="INVOICE_ID"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="10"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19b1"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="INVOICE_ID"/>-->
+<!--            <column name="MAPPED_NAME" value="INVOICE_ID"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="10"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19b2"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="GL_DATE"/>
-            <column name="MAPPED_NAME" value="GL_DATE"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="7.67"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19b2"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="GL_DATE"/>-->
+<!--            <column name="MAPPED_NAME" value="GL_DATE"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="7.67"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19b3"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>
-            <column name="SOURCE_NAME" value="INVOICE_AMOUNT"/>
-            <column name="MAPPED_NAME" value="INVOICE_AMOUNT"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="long"/>
-            <column name="COLUMN_WIDTH" value="16.5"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="8f0fb820-640a-41a9-b5a1-e74c336a19b3"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb1"/>-->
+<!--            <column name="SOURCE_NAME" value="INVOICE_AMOUNT"/>-->
+<!--            <column name="MAPPED_NAME" value="INVOICE_AMOUNT"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="long"/>-->
+<!--            <column name="COLUMN_WIDTH" value="16.5"/>-->
+<!--        </insert>-->
    </changeSet>
 
     <changeSet id="0002225-insert-data-for-field-attributes-ccms-xls-payment-value-defined" author="jason smallman">
 
         <comment>Insert initial data into FIELD_ATTRIBUTES for CCMS Excel report, tab payment value defined</comment>
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c41"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>
-            <column name="SOURCE_NAME" value="VENDOR_SITE_CODE"/>
-            <column name="MAPPED_NAME" value="VENDOR_SITE_CODE"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="17.83"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c41"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>-->
+<!--            <column name="SOURCE_NAME" value="VENDOR_SITE_CODE"/>-->
+<!--            <column name="MAPPED_NAME" value="VENDOR_SITE_CODE"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="17.83"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c42"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>
-            <column name="SOURCE_NAME" value="VENDOR_SITE_NAME"/>
-            <column name="MAPPED_NAME" value="VENDOR_SITE_NAME"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="63.67"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c42"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>-->
+<!--            <column name="SOURCE_NAME" value="VENDOR_SITE_NAME"/>-->
+<!--            <column name="MAPPED_NAME" value="VENDOR_SITE_NAME"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="63.67"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c43"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>
-            <column name="SOURCE_NAME" value="FIRST_GL_DATE"/>
-            <column name="MAPPED_NAME" value="FIRST_GL_DATE"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="13.33"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c43"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>-->
+<!--            <column name="SOURCE_NAME" value="FIRST_GL_DATE"/>-->
+<!--            <column name="MAPPED_NAME" value="FIRST_GL_DATE"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="13.33"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c44"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>
-            <column name="SOURCE_NAME" value="LATEST_GL_DATE"/>
-            <column name="MAPPED_NAME" value="LATEST_GL_DATE"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="15"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c44"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>-->
+<!--            <column name="SOURCE_NAME" value="LATEST_GL_DATE"/>-->
+<!--            <column name="MAPPED_NAME" value="LATEST_GL_DATE"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="15"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c45"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>
-            <column name="SOURCE_NAME" value="TOTAL"/>
-            <column name="MAPPED_NAME" value="TOTAL"/>
-            <column name="FORMAT" value="#.00"/>
-            <column name="FORMAT_TYPE" value="double"/>
-            <column name="COLUMN_WIDTH" value="9.17"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="251ab6d4-0e29-4c9a-aae2-dfa3abf91c45"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb2"/>-->
+<!--            <column name="SOURCE_NAME" value="TOTAL"/>-->
+<!--            <column name="MAPPED_NAME" value="TOTAL"/>-->
+<!--            <column name="FORMAT" value="#.00"/>-->
+<!--            <column name="FORMAT_TYPE" value="double"/>-->
+<!--            <column name="COLUMN_WIDTH" value="9.17"/>-->
+<!--        </insert>-->
 
     </changeSet>
 
@@ -856,65 +720,65 @@
 
         <comment>Insert initial data into FIELD_ATTRIBUTES for CCMS Excel report, tab payment value not defined</comment>
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b1"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>
-            <column name="SOURCE_NAME" value="VENDOR_SITE_CODE"/>
-            <column name="MAPPED_NAME" value="VENDOR_SITE_CODE"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="17.83"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b1"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>-->
+<!--            <column name="SOURCE_NAME" value="VENDOR_SITE_CODE"/>-->
+<!--            <column name="MAPPED_NAME" value="VENDOR_SITE_CODE"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="17.83"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b2"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>
-            <column name="SOURCE_NAME" value="VENDOR_SITE_NAME"/>
-            <column name="MAPPED_NAME" value="VENDOR_SITE_NAME"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="35"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b2"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>-->
+<!--            <column name="SOURCE_NAME" value="VENDOR_SITE_NAME"/>-->
+<!--            <column name="MAPPED_NAME" value="VENDOR_SITE_NAME"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="35"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b3"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>
-            <column name="SOURCE_NAME" value="PAY_GROUP_LOOKUP_CODE"/>
-            <column name="MAPPED_NAME" value="PAY_GROUP_LOOKUP_CODE"/>
-            <column name="FORMAT" value=""/>
-            <column name="FORMAT_TYPE" value="string"/>
-            <column name="COLUMN_WIDTH" value="24.83"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b3"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>-->
+<!--            <column name="SOURCE_NAME" value="PAY_GROUP_LOOKUP_CODE"/>-->
+<!--            <column name="MAPPED_NAME" value="PAY_GROUP_LOOKUP_CODE"/>-->
+<!--            <column name="FORMAT" value=""/>-->
+<!--            <column name="FORMAT_TYPE" value="string"/>-->
+<!--            <column name="COLUMN_WIDTH" value="24.83"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b4"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>
-            <column name="SOURCE_NAME" value="FIRST_GL_DATE"/>
-            <column name="MAPPED_NAME" value="FIRST_GL_DATE"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="13.33"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b4"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>-->
+<!--            <column name="SOURCE_NAME" value="FIRST_GL_DATE"/>-->
+<!--            <column name="MAPPED_NAME" value="FIRST_GL_DATE"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="13.33"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b5"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>
-            <column name="SOURCE_NAME" value="LATEST_GL_DATE"/>
-            <column name="MAPPED_NAME" value="LATEST_GL_DATE"/>
-            <column name="FORMAT" value="dd-MMM-yy"/>
-            <column name="FORMAT_TYPE" value="date"/>
-            <column name="COLUMN_WIDTH" value="15"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b5"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>-->
+<!--            <column name="SOURCE_NAME" value="LATEST_GL_DATE"/>-->
+<!--            <column name="MAPPED_NAME" value="LATEST_GL_DATE"/>-->
+<!--            <column name="FORMAT" value="dd-MMM-yy"/>-->
+<!--            <column name="FORMAT_TYPE" value="date"/>-->
+<!--            <column name="COLUMN_WIDTH" value="15"/>-->
+<!--        </insert>-->
 
-        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">
-            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b6"/>
-            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>
-            <column name="SOURCE_NAME" value="TOTAL"/>
-            <column name="MAPPED_NAME" value="TOTAL"/>
-            <column name="FORMAT" value="#.00"/>
-            <column name="FORMAT_TYPE" value="double"/>
-            <column name="COLUMN_WIDTH" value="8.17"/>
-        </insert>
+<!--        <insert tableName="FIELD_ATTRIBUTES" schemaName="GPFD">-->
+<!--            <column name="ID" value="ba373b4e-e735-49dd-9087-d7f1fb40e1b6"/>-->
+<!--            <column name="REPORT_QUERY_ID" value="1dc32729-f50d-418e-a2af-ad83d9248bb3"/>-->
+<!--            <column name="SOURCE_NAME" value="TOTAL"/>-->
+<!--            <column name="MAPPED_NAME" value="TOTAL"/>-->
+<!--            <column name="FORMAT" value="#.00"/>-->
+<!--            <column name="FORMAT_TYPE" value="double"/>-->
+<!--            <column name="COLUMN_WIDTH" value="8.17"/>-->
+<!--        </insert>-->
 
     </changeSet>
 
@@ -1376,5 +1240,143 @@
             <column name="TAB_NAME" value="MAIN"/>
         </insert>
     </changeSet>
+
+    <changeSet id="1" author="yourname">
+        <createTable tableName="V_CIS_TO_CCMS_INVOICE_CCMS_AP_DEBTS"  schemaName="ANY_REPORT">
+            <column name="VENDOR_SITE_CODE" type="VARCHAR(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VENDOR_SITE_NAME" type="VARCHAR(255)"/>
+            <column name="FIRST_GL_DATE" type="DATE"/>
+            <column name="LATEST_GL_DATE" type="DATE"/>
+            <column name="TOTAL_INC_MEDIATION" type="DECIMAL(18, 2)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Insert data into the VENDOR_SITES table -->
+    <changeSet id="2" author="yourname">
+        <insert tableName="V_CIS_TO_CCMS_INVOICE_CCMS_AP_DEBTS" schemaName="ANY_REPORT">
+            <column name="VENDOR_SITE_CODE" value="5430C"/>
+            <column name="VENDOR_SITE_NAME" value="PAUL J EPSTEIN"/>
+            <column name="FIRST_GL_DATE" value="2012-10-30"/>
+            <column name="LATEST_GL_DATE" value="2021-05-11"/>
+            <column name="TOTAL_INC_MEDIATION" value="-1"/>
+        </insert>
+        <insert tableName="V_CIS_TO_CCMS_INVOICE_CCMS_AP_DEBTS" schemaName="ANY_REPORT">
+            <column name="VENDOR_SITE_CODE" value="8932J"/>
+            <column name="VENDOR_SITE_NAME" value="LINDA A PEARCE-(DEC'D)"/>
+            <column name="FIRST_GL_DATE" value="2012-12-06"/>
+            <column name="LATEST_GL_DATE" value="2016-02-10"/>
+            <column name="TOTAL_INC_MEDIATION" value="-2"/>
+        </insert>
+        <insert tableName="V_CIS_TO_CCMS_INVOICE_CCMS_AP_DEBTS" schemaName="ANY_REPORT">
+            <column name="VENDOR_SITE_CODE" value="9182F"/>
+            <column name="VENDOR_SITE_NAME" value="DEREK A SWEETING"/>
+            <column name="FIRST_GL_DATE" value="2013-02-11"/>
+            <column name="LATEST_GL_DATE" value="2023-05-30"/>
+            <column name="TOTAL_INC_MEDIATION" value="-2"/>
+        </insert>
+        <insert tableName="V_CIS_TO_CCMS_INVOICE_CCMS_AP_DEBTS" schemaName="ANY_REPORT">
+            <column name="VENDOR_SITE_CODE" value="0P337X"/>
+            <column name="VENDOR_SITE_NAME" value="SYKES LEE BRYDSON"/>
+            <column name="FIRST_GL_DATE" value="2013-07-03"/>
+            <column name="LATEST_GL_DATE" value="2020-12-21"/>
+            <column name="TOTAL_INC_MEDIATION" value="-2394.94"/>
+        </insert>
+        <!-- Add more insert statements for the remaining rows -->
+    </changeSet>
+        <!-- Create the VENDOR_SITES table -->
+        <changeSet id="11" author="yourname">
+            <createTable tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" type="VARCHAR(50)">
+                    <constraints primaryKey="true" nullable="false"/>
+                </column>
+                <column name="VENDOR_SITE_NAME" type="VARCHAR(255)"/>
+                <column name="FIRST_GL_DATE" type="DATE"/>
+                <column name="LATEST_GL_DATE" type="DATE"/>
+                <column name="TOTAL_INC_MEDIATION" type="DECIMAL(18, 2)"/>
+            </createTable>
+        </changeSet>
+
+        <!-- Insert data into the VENDOR_SITES table -->
+        <changeSet id="22" author="yourname">
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="0R038W"/>
+                <column name="VENDOR_SITE_NAME" value="LANGLEYS LLP"/>
+                <column name="FIRST_GL_DATE" value="2022-03-25"/>
+                <column name="LATEST_GL_DATE" value="2023-08-07"/>
+                <column name="TOTAL_INC_MEDIATION" value="489695.61"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="0D484M"/>
+                <column name="VENDOR_SITE_NAME" value="BERNARD CHILL AXTELL"/>
+                <column name="FIRST_GL_DATE" value="2017-04-10"/>
+                <column name="LATEST_GL_DATE" value="2022-11-28"/>
+                <column name="TOTAL_INC_MEDIATION" value="352559.28"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="0L012H"/>
+                <column name="VENDOR_SITE_NAME" value="E REX MAKIN CO"/>
+                <column name="FIRST_GL_DATE" value="2013-10-18"/>
+                <column name="LATEST_GL_DATE" value="2020-02-12"/>
+                <column name="TOTAL_INC_MEDIATION" value="242610.75"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="1G205V"/>
+                <column name="VENDOR_SITE_NAME" value="KARIM CO SOLICITORS"/>
+                <column name="FIRST_GL_DATE" value="2023-05-06"/>
+                <column name="LATEST_GL_DATE" value="2023-06-06"/>
+                <column name="TOTAL_INC_MEDIATION" value="234639.37"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="0U657T"/>
+                <column name="VENDOR_SITE_NAME" value="LANGLEYS LLP"/>
+                <column name="FIRST_GL_DATE" value="2022-03-23"/>
+                <column name="LATEST_GL_DATE" value="2023-07-27"/>
+                <column name="TOTAL_INC_MEDIATION" value="193722.84"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="0B311A"/>
+                <column name="VENDOR_SITE_NAME" value="MATHIS-INTERVENTION"/>
+                <column name="FIRST_GL_DATE" value="2012-10-20"/>
+                <column name="LATEST_GL_DATE" value="2022-03-04"/>
+                <column name="TOTAL_INC_MEDIATION" value="140817.24"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="2N959L"/>
+                <column name="VENDOR_SITE_NAME" value="BIRMINGHAM LAW PRACTICE LTD"/>
+                <column name="FIRST_GL_DATE" value="2018-09-15"/>
+                <column name="LATEST_GL_DATE" value="2020-12-22"/>
+                <column name="TOTAL_INC_MEDIATION" value="111330.91"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="0L932H"/>
+                <column name="VENDOR_SITE_NAME" value="STEELE FORD NEWTON"/>
+                <column name="FIRST_GL_DATE" value="2017-08-14"/>
+                <column name="LATEST_GL_DATE" value="2022-02-23"/>
+                <column name="TOTAL_INC_MEDIATION" value="62318.93"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="02AGH"/>
+                <column name="VENDOR_SITE_NAME" value="MACKESYS SOLICITORS-ADVOCATE"/>
+                <column name="FIRST_GL_DATE" value="2014-11-07"/>
+                <column name="LATEST_GL_DATE" value="2017-05-30"/>
+                <column name="TOTAL_INC_MEDIATION" value="59135.36"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="2Q023T"/>
+                <column name="VENDOR_SITE_NAME" value="KINGSWRIGHT SOLICITORS-INTERVENTION"/>
+                <column name="FIRST_GL_DATE" value="2023-07-28"/>
+                <column name="LATEST_GL_DATE" value="2023-07-28"/>
+                <column name="TOTAL_INC_MEDIATION" value="54876.28"/>
+            </insert>
+            <insert tableName="V_CIS_TO_CCMS_INVOICE_HELD_PAYMENTS" schemaName="ANY_REPORT">
+                <column name="VENDOR_SITE_CODE" value="2M135D"/>
+                <column name="VENDOR_SITE_NAME" value="GORDONS LLP RE: HANSON YOUNG CO SOLICITORS-INTERVENTION"/>
+                <column name="FIRST_GL_DATE" value="2016-11-11"/>
+                <column name="LATEST_GL_DATE" value="2019-06-03"/>
+                <column name="TOTAL_INC_MEDIATION" value="49186.71"/>
+            </insert>
+        </changeSet>
 
 </databaseChangeLog>
