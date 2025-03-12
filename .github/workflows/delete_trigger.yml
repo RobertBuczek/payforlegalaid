@@ -3,7 +3,8 @@ name: Delete trigger
 on: delete
 
 jobs:
-  cleanup-testable:
+  delete-trigger:
+    if: github.event.ref_type == 'branch'
     environment: development
     runs-on: ubuntu-latest
     permissions:
