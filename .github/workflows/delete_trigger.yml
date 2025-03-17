@@ -5,6 +5,7 @@ on:
 
 jobs:
   delete-trigger:
+    if: github.event.ref_type == 'branch'
     environment: development
     runs-on: ubuntu-latest
     permissions:
