@@ -1,16 +1,17 @@
 name: Delete trigger
 
-on: delete
+on:
+  delete
 
 jobs:
   delete-trigger:
-    if: github.event.ref_type == 'branch'
     environment: development
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     steps:
+      - uses: actions/checkout@v4
       - name: Trace GitHub Event
         env:
           GH: ${{ toJson(github) }}
