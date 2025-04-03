@@ -5,6 +5,12 @@ on:
     branches:
       - 'test-*'
 
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+
 jobs:
   build-and-deploy-to-testable:
     environment: development
