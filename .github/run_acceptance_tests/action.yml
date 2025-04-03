@@ -8,6 +8,7 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: ministryofjustice/payforlegalaid-tests
+        ref: test/at-foo
         path: testCode
 
     - name: Setup Java
@@ -34,4 +35,11 @@ runs:
         mvn -B clean test -s .github/settings.xml
 
       shell:
+        bash
+
+    - name: Build docker-test
+      run: |
+        mvn -B clean package -s .github/settings.xml
+        docker build -t gpfd-tests:latest .
+      shell: 
         bash
