@@ -24,7 +24,7 @@ spec:
             - containerPort: 8080
           env:
             - name: GPFD_URL
-              value: ${GPFD_URL}
+              value: https://${GPFD_URL}
             - name: SPRING_PROFILES_ACTIVE
               value: "dev"
             - name: AZURE_CLIENT_SECRET
