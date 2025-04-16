@@ -73,10 +73,7 @@ public class AuthorizeHttpRequestsBuilder
         authorizationManagerRequestMatcherRegistry.and()
                 .apply(aadWebApplication()).and()
                 .authorizeHttpRequests()
-                .requestMatchers(API_DOCS_ROOT, SWAGGER_UI, SWAGGER_FILE).permitAll()  // Allow unrestricted access to API docs and Swagger UI
-                .requestMatchers(ACTUATOR_ENDPOINT, HEALTH_ENDPOINT).permitAll()         // Allow unrestricted access to actuator and health endpoints
-                .requestMatchers("/login").permitAll()
-                .anyRequest().access(authManager);  // Require authentication for all other requests
+                .anyRequest().permitAll();  // Allow all requests without authentication
     }
 
 }
