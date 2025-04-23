@@ -17,6 +17,8 @@ runs:
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
+
+
       env:
         REGISTRY: ${{ env.REGISTRY }}
         REPOSITORY: ${{ env.REPOSITORY }}
