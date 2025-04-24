@@ -36,6 +36,8 @@ on:
       kube_cert:
         required: true
 
+
+
 jobs:
   build-and-deploy:
     environment: ${{ inputs.github_environment }}
