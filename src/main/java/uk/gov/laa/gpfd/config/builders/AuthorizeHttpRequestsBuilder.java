@@ -70,10 +70,7 @@ public class AuthorizeHttpRequestsBuilder
     @SneakyThrows
     @Override
     public void customize(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry authorizationManagerRequestMatcherRegistry) {
-        authorizationManagerRequestMatcherRegistry.and()
-                .apply(aadWebApplication()).and()
-                .authorizeHttpRequests()
-                .anyRequest().permitAll();  // Allow all requests without authentication
+        authorizationManagerRequestMatcherRegistry.anyRequest().permitAll();
     }
 
 }
