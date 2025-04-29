@@ -13,10 +13,7 @@ import uk.gov.laa.gpfd.exception.DatabaseReadException;
 import uk.gov.laa.gpfd.exception.ReportIdNotFoundException;
 import uk.gov.laa.gpfd.model.GetReportById200Response;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +28,10 @@ public class ReportService {
     private final ReportViewsDao reportViewsDao;
     private final MappingTableService mappingTableService;
     private final AppConfig appConfig;
+
+    public void createCsvStream(String sqlQuery, OutputStream stream) throws IOException, DatabaseReadException {
+        reportViewsDao.callDataBaseROB(sqlQuery, stream);
+    }
 
     /**
      * Obtains a resultlist of data from the MOJFIN reports database, and converts it into a CSV data stream
@@ -103,19 +104,11 @@ public class ReportService {
         var reportListResponse = mappingTableService.getDetailsForSpecificMapping(requestedId);
 
         //Get CSV data stream
-        ByteArrayOutputStream csvDataOutputStream;
-        try {
-            log.debug("Creating CSV stream with id: " + reportListResponse.getId());
-            csvDataOutputStream = createCsvStream(reportListResponse.getSqlQuery());
-        } catch (IOException e) {
-            throw new CsvStreamException("Error creating CSV data stream: " + e);
-        }
 
         //Create response
         StreamingResponseBody responseBody = outputStream -> {
             try {
-                csvDataOutputStream.writeTo(outputStream);
-                outputStream.flush();
+                createCsvStream(reportListResponse.getSqlQuery(), outputStream);
             } catch (IOException e) {
                 throw new CsvStreamException("Error writing csv stream data to a response body " + e);
             }

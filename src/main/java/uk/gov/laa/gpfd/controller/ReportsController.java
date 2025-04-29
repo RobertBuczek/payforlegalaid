@@ -65,7 +65,7 @@ public class ReportsController implements ReportsApi, ExcelApi {
     @RequestMapping(value = "/csv/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity<StreamingResponseBody> getCSV(@PathVariable(value = "id") UUID requestedId) {
         log.debug("Returning a CSV response to user");
-        reportsTrackingService.saveReportsTracking(requestedId);
+//        reportsTrackingService.saveReportsTracking(requestedId);
         return reportService.createCSVResponse(requestedId);
     }
 
